@@ -104,7 +104,7 @@ public:
 	size_t t_len;
 
 	// Token flags
-	int flags;
+	unsigned int flags;
 
     // Conversion notes associated with the token
     const char *notes_str;
