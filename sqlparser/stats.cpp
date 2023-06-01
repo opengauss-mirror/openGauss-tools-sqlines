@@ -315,7 +315,7 @@ void Stats::Add(std::map<std::string, StatsItem> &map, Token* start, StatsItem *
     if(start == NULL || start->str == NULL || start->len == 0 || end == NULL)
         return;
 
-    std::string source(start->str, start->len + start->remain_size - end->remain_size);
+    std::string source(start->str, (int)start->len + start->remain_size - end->remain_size);
     Add(map, source, start->t_str, si, case_insense);
 }
 
@@ -460,7 +460,7 @@ void Stats::Add(std::map<std::string, StatsDetailItem> &map, Token *start_val, T
 	if(start_val == NULL || start_val->str == NULL || end_val == NULL || end_val->str == NULL)
 		return;
 
-	std::string value(start_val->str, start_val->len + start_val->remain_size - end_val->remain_size);
+	std::string value(start_val->str, (int)start_val->len + start_val->remain_size - end_val->remain_size);
 
 	Add(map, value, item, start, end);
 }	
