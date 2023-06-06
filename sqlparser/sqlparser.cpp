@@ -504,7 +504,7 @@ Token* SqlParser::GetNextPlusMinusAsOperatorToken(const char ch, const wchar_t w
 
 	// Rewind input pointer
 	_next_start -= token->len - 1;
-	_remain_size += token->len - 1;
+	_remain_size += (int)token->len - 1;
 
 	token->len = 0;
 
@@ -1499,7 +1499,7 @@ bool SqlParser::GetWordToken(Token *token)
 			// Spaces are allowed between identifier parts: table . name 
 			if(*cur == ' ')
 			{
-				int ident_len = 0;
+				size_t ident_len = 0;
 
 				for(int i = 0; i < _remain_size - 1; i++)
 				{
@@ -1599,7 +1599,7 @@ bool SqlParser::GetWordToken(Token *token)
 
 	if(partially_quoted_identifier == true)
 	{
-		_remain_size += len;
+		_remain_size += (int)len;
 
 		GetQuotedIdentifier(token, true);
 	}
